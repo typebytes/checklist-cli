@@ -18,6 +18,9 @@
     "format:check": "npm run format:base -- --list-different",
     "format:fix": "npm run format:base -- --write"
   },
+  "bin": {
+    "checklist": "ts-node ./tools/checklist-cli.ts"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint --env HUSKY_GIT_PARAMS",
