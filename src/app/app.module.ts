@@ -12,12 +12,14 @@ import { ChecklistModule } from './checklist/checklist.module';
 import { CustomMaterialModule } from './custom-material.module';
 import { ProjectsModule } from './projects/projects.module';
 import { META_REDUCERS, ROOT_REDUCER } from './state/app.state';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'angular-checklist' }),
     BrowserAnimationsModule,
+    HttpClientModule,
     StoreModule.forRoot(ROOT_REDUCER, { metaReducers: META_REDUCERS }),
     ProjectsModule,
     ChecklistModule,

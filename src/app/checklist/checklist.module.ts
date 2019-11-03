@@ -1,5 +1,6 @@
+import { ChecklistInitializer } from './checklist-initializer.service';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
@@ -45,7 +46,21 @@ import { checklistReducer } from './state/checklist.reducer';
     ConfirmationDialogComponent,
     ChecklistSearchComponent
   ],
-  providers: [SearchService],
+  providers: [
+    SearchService,
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [ChecklistInitializer],
+      useFactory: checklistInitializerFactory
+    }
+  ],
   entryComponents: [ConfirmationDialogComponent]
 })
 export class ChecklistModule {}
+
+export function checklistInitializerFactory(checklistInitializer: ChecklistInitializer) {
+  return () => {
+    checklistInitializer.initialize().subscribe();
+  };
+}

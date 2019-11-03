@@ -1,10 +1,18 @@
+import { CategoryEntities, ItemEntities } from './../models/checklist.model';
 import { Action } from '@ngrx/store';
 import { ChecklistFilter } from '../models/checklist.model';
 
 export enum ChecklistActionTypes {
+  INITIALIZE_CHECKLIST = '[Checlist] initialize checklist',
   SET_CATEGORIES_FILTER = '[Checklist] set categories filter',
   SET_FAVORITES_FILTER = '[Checklist] set favroites filter',
   TOGGLE_EDIT_MODE = '[Checklist] toggle edit mode'
+}
+
+export class InitializeChecklist implements Action {
+  readonly type = ChecklistActionTypes.INITIALIZE_CHECKLIST;
+
+  constructor(public payload: { categories: CategoryEntities; items: ItemEntities }) {}
 }
 
 export class SetCategoriesFilter implements Action {
@@ -25,4 +33,4 @@ export class ToggleEditMode implements Action {
   constructor() {}
 }
 
-export type ChecklistActions = SetCategoriesFilter | SetFavoritesFilter | ToggleEditMode;
+export type ChecklistActions = InitializeChecklist | SetCategoriesFilter | SetFavoritesFilter | ToggleEditMode;

@@ -2,10 +2,9 @@ import { Filter } from '../models/checklist.model';
 import { ChecklistActions, ChecklistActionTypes } from './checklist.actions';
 import { ChecklistState } from './checklist.state';
 
-const CHECKLIST = require('../../../assets/content.json');
-
 export const INITIAL_STATE: ChecklistState = {
-  ...CHECKLIST,
+  categories: {},
+  items: {},
   filter: {
     categories: 'ALL',
     favorites: 'ALL'
@@ -15,6 +14,12 @@ export const INITIAL_STATE: ChecklistState = {
 
 export function checklistReducer(state = INITIAL_STATE, action: ChecklistActions) {
   switch (action.type) {
+    case ChecklistActionTypes.INITIALIZE_CHECKLIST:
+      return {
+        ...state,
+        categories: action.payload.categories,
+        items: action.payload.items
+      };
     case ChecklistActionTypes.SET_CATEGORIES_FILTER:
     case ChecklistActionTypes.SET_FAVORITES_FILTER:
       return {

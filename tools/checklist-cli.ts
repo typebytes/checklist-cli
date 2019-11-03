@@ -5,7 +5,7 @@ export async function main() {
   const contentPath = path.join(process.cwd(), process.argv[2]);
   const checklist = await buildChecklist(contentPath);
 
-  dumpDataToDisk('content', checklist, 'dist');
+  dumpDataToDisk('content', checklist, path.join('dist', 'browser', 'assets'));
 
   printSuccess('Content was successfully compiled', 'Done');
 }
