@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import * as path from 'path';
 import { buildChecklist, dumpDataToDisk, printSuccess } from './utils';
 
