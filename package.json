@@ -1,5 +1,5 @@
 {
-  "name": "checklist-cli",
+  "name": "@wishtack/checklist-cli",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
