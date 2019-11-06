@@ -5,9 +5,12 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { environment } from '../../environments/environment';
 import { ChecklistState } from '../checklist/state/checklist.state';
 import { ProjectsState } from '../projects/models/projects.model';
+import { configReducer } from './config.reducer';
+import { ConfigState } from './config.state';
 
 export interface ApplicationState {
   checklist: ChecklistState;
+  config: ConfigState;
   projects: ProjectsState;
   router: RouterReducerState;
 }
@@ -22,5 +25,6 @@ const DEV_META_REDUCERS = [storeFreeze, ...DEFAULT_META_REDUCERS];
 export const META_REDUCERS = !environment.production ? DEV_META_REDUCERS : DEFAULT_META_REDUCERS;
 
 export const ROOT_REDUCER: ActionReducerMap<Partial<ApplicationState>> = {
+  config: configReducer,
   router: routerReducer
 };

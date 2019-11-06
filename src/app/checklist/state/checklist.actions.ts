@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 import { ChecklistFilter } from '../models/checklist.model';
 
 export enum ChecklistActionTypes {
-  INITIALIZE_CHECKLIST = '[Checlist] initialize checklist',
+  INITIALIZE_CHECKLIST = '[Checklist] initialize checklist',
   SET_CATEGORIES_FILTER = '[Checklist] set categories filter',
   SET_FAVORITES_FILTER = '[Checklist] set favroites filter',
   TOGGLE_EDIT_MODE = '[Checklist] toggle edit mode'
