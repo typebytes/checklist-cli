@@ -5,6 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { asyncScheduler, Observable } from 'rxjs';
 import { filter, map, observeOn } from 'rxjs/operators';
 import { ApplicationState } from '../../state/app.state';
+import { ConfigSelectors } from '../../state/config.selectors';
 import { Project } from '../models/projects.model';
 
 import {
@@ -25,6 +26,7 @@ import { ProjectsSelectors } from '../state/projects.selectors';
 })
 export class ProjectsViewComponent implements OnInit {
   projects$: Observable<Array<Project>>;
+  title$ = this.store.pipe(select(ConfigSelectors.getTitle));
 
   constructor(private store: Store<ApplicationState>, private router: Router, private dialog: MatDialog) {}
 

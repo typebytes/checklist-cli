@@ -3,7 +3,7 @@
   <div class="projects-header">
     <div class="welcome-wrapper">
       <div class="welcome-message">
-        <h1>Welcome to Angular Checklist!</h1>
+        <h1 *ngIf="(title$ | async) as title">Welcome to {{ title }}!</h1>
         <p class="welcome-subtitle">Curated list of common mistakes made when developing Angular applications.</p>
       </div>
       <img src="assets/undraw_checklist.svg" alt="Checklist" />

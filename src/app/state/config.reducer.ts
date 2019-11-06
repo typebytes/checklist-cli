@@ -2,7 +2,7 @@ import { ConfigActions, ConfigActionTypes } from './config.actions';
 import { ConfigState } from './config.state';
 
 export const INITIAL_STATE: ConfigState = {
-  title: null
+  title: 'Checklist'
 };
 
 export function configReducer(state = INITIAL_STATE, action: ConfigActions) {
