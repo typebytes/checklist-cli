@@ -8,4 +8,9 @@ export namespace ConfigSelectors {
     getConfigState,
     config => config.title
   );
+
+  export const getFooterLinks = createSelector(
+    getConfigState,
+    config => config.footerLinks
+  );
 }
