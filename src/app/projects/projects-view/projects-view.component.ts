@@ -27,6 +27,7 @@ import { ProjectsSelectors } from '../state/projects.selectors';
 export class ProjectsViewComponent implements OnInit {
   projects$: Observable<Array<Project>>;
   title$ = this.store.pipe(select(ConfigSelectors.getTitle));
+  subtitle$ = this.store.pipe(select(ConfigSelectors.getSubtitle));
 
   constructor(private store: Store<ApplicationState>, private router: Router, private dialog: MatDialog) {}
 

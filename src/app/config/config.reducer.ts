@@ -2,7 +2,8 @@ import { ConfigActions, ConfigActionTypes } from './config.actions';
 import { ConfigState } from './config.state';
 
 export const INITIAL_STATE: ConfigState = {
-  title: 'Checklist',
+  title: 'Angular Checklist',
+  subtitle: 'Curated list of common mistakes made when developing Angular applications.',
   description: `Angular Checklist is a curated list of best practices for Angular apps. It’s a todo application where each item represents \
 one best practice. You can use it for code reviews or as a style guide for your applications.`,
   footerLinks: [

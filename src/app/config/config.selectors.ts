@@ -9,6 +9,11 @@ export namespace ConfigSelectors {
     config => config.title
   );
 
+  export const getSubtitle = createSelector(
+    getConfigState,
+    config => config.subtitle
+  );
+
   export const getDescription = createSelector(
     getConfigState,
     config => config.description
