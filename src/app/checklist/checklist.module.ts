@@ -1,8 +1,8 @@
-import { ChecklistInitializer } from './checklist-initializer.service';
 import { CommonModule } from '@angular/common';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CustomMaterialModule } from '../custom-material.module';
 import { SharedModule } from '../shared/shared.module';
@@ -17,6 +17,7 @@ import { ChecklistListComponent } from './checklist-list/checklist-list.componen
 import { ChecklistOverviewComponent } from './checklist-overview/checklist-overview.component';
 import { ChecklistSearchComponent } from './checklist-search/checklist-search.component';
 import { ChecklistComponent } from './checklist.component';
+import { ChecklistEffects } from './checklist.effects';
 import { CHECKLIST_ROUTES } from './checklist.routes';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { SearchService } from './search/search.service';
@@ -26,6 +27,7 @@ import { checklistReducer } from './state/checklist.reducer';
   imports: [
     CommonModule,
     CustomMaterialModule,
+    EffectsModule.forFeature([ChecklistEffects]),
     ReactiveFormsModule,
     SharedModule,
     RouterModule.forChild(CHECKLIST_ROUTES),
@@ -46,21 +48,7 @@ import { checklistReducer } from './state/checklist.reducer';
     ConfirmationDialogComponent,
     ChecklistSearchComponent
   ],
-  providers: [
-    SearchService,
-    {
-      provide: APP_INITIALIZER,
-      multi: true,
-      deps: [ChecklistInitializer],
-      useFactory: checklistInitializerFactory
-    }
-  ],
+  providers: [SearchService],
   entryComponents: [ConfirmationDialogComponent]
 })
 export class ChecklistModule {}
-
-export function checklistInitializerFactory(checklistInitializer: ChecklistInitializer) {
-  return () => {
-    checklistInitializer.initialize().subscribe();
-  };
-}
