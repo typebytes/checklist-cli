@@ -1,6 +1,6 @@
 {
   "name": "@wishtack/checklist-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -23,6 +23,9 @@
   "bin": {
     "checklist": "./dist/tools/checklist-cli.js"
   },
+  "files": [
+    "dist/**"
+  ],
   "husky": {
     "hooks": {
       "commit-msg": "commitlint --env HUSKY_GIT_PARAMS",
