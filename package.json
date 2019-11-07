@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"ng serve\" \"yarn build-content:watch\"",
-    "build": "concurrently \"yarn build-app:prod\" \"yarn build-cli\"",
+    "build": "yarn clean && concurrently \"yarn build-app:prod\" \"yarn build-cli\"",
+    "clean": "rm -f src/assets/config.json src/assets/content.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "cypress open",
@@ -12,7 +13,7 @@
     "build-cli": "tsc -p tools/tsconfig.json",
     "build-content": "ts-node ./tools/checklist-cli.ts content",
     "build-content:watch": "nodemon",
-    "ci": "yarn build",
+    "ci": "yarn build-app:prod && yarn build-cli",
     "format:base": "prettier \"{src,tools,cypress}/**/*{.ts,.js,.json,.html}\"",
     "format:check": "npm run format:base -- --list-different",
     "format:fix": "npm run format:base -- --write"
