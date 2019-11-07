@@ -1058,6 +1058,11 @@
     mkdirp "^0.5.1"
     rimraf "^2.5.2"
 
+"@ngrx/effects@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-6.1.2.tgz#602f3ee9798e00179075ddef030ded88c28b1aa1"
+  integrity sha512-RUuQ5/7ofxGEZnRRdlC1oE9ugVlTYGm92MVj7c6IirHrVN9W5yQjjMTYEYceVCDOYsiXP7Pyw0dcPp6J5wD2EQ==
+
 "@ngrx/router-store@^6.1.2":
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-6.1.2.tgz#63bfcd3710c53ea2c5456b82c57fd433e5af25bc"
