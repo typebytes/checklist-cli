@@ -5,8 +5,8 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { environment } from '../../environments/environment';
 import { ChecklistState } from '../checklist/state/checklist.state';
 import { ProjectsState } from '../projects/models/projects.model';
-import { configReducer } from './config.reducer';
-import { ConfigState } from './config.state';
+import { configReducer } from '../config/config.reducer';
+import { ConfigState } from '../config/config.state';
 
 export interface ApplicationState {
   checklist: ChecklistState;

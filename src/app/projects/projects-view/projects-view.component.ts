@@ -5,7 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { asyncScheduler, Observable } from 'rxjs';
 import { filter, map, observeOn } from 'rxjs/operators';
 import { ApplicationState } from '../../state/app.state';
-import { ConfigSelectors } from '../../state/config.selectors';
+import { ConfigSelectors } from '../../config/config.selectors';
 import { Project } from '../models/projects.model';
 
 import {

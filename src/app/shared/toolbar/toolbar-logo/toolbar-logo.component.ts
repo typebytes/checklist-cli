@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { ApplicationState } from '../../../state/app.state';
-import { ConfigSelectors } from '../../../state/config.selectors';
+import { ConfigSelectors } from '../../../config/config.selectors';
 
 @Component({
   selector: 'ac-toolbar-logo',
