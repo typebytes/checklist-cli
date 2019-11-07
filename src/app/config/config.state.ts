@@ -8,5 +8,6 @@ export interface FooterLink {
 
 export interface ConfigState {
   title: string;
+  about: string[];
   footerLinks: FooterLink[];
 }

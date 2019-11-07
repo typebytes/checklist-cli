@@ -13,4 +13,9 @@ export namespace ConfigSelectors {
     getConfigState,
     config => config.footerLinks
   );
+
+  export const getAbout = createSelector(
+    getConfigState,
+    config => config.about
+  );
 }
