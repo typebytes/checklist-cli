@@ -1,0 +1,5 @@
+{
+  "ignore": [".git", "node_modules"],
+  "watch": ["examples/angular-checklist/**/*"],
+  "exec": "yarn build-content:angular-checklist --dev"
+}
