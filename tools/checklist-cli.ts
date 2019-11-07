@@ -4,12 +4,15 @@ import * as path from 'path';
 import * as ncp from 'ncp';
 import { buildChecklist, dumpDataToDisk, printSuccess } from './utils';
 import { promisify } from 'util';
-import { mkdir } from 'fs';
+import { copyFile, mkdir } from 'fs';
 
 export async function main() {
-  const distBrowserPath = path.join('dist', 'browser');
+  const contentPath = path.join(process.cwd(), process.argv[2]);
+  const distBrowserPath = path.join(process.cwd(), 'dist', 'browser');
+
   await _copyApp({ distBrowserPath });
-  await _buildChecklist({ distBrowserPath });
+  await _copyConfig({ contentPath, distBrowserPath });
+  await _buildChecklist({ contentPath, distBrowserPath });
 
   printSuccess('Content was successfully compiled', 'Done');
 }
@@ -21,11 +24,23 @@ export async function _copyApp({ distBrowserPath }) {
   printSuccess(`App was successfully generated in "${distBrowserPath}"`, 'Success');
 }
 
-export async function _buildChecklist({ distBrowserPath }) {
-  const contentPath = path.join(process.cwd(), process.argv[2]);
+export async function _copyConfig({ contentPath, distBrowserPath }) {
+  const configFileName = 'config.json';
+  await promisify(copyFile)(
+    path.join(contentPath, configFileName),
+    path.join(distBrowserPath, 'assets', configFileName)
+  );
+}
+
+export async function _buildChecklist({ contentPath, distBrowserPath }) {
   const checklist = await buildChecklist(contentPath);
 
   dumpDataToDisk('content', checklist, path.join(distBrowserPath, 'assets'));
 }
 
-main().then(() => process.exit(0));
+main()
+  .then(() => process.exit(0))
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  });

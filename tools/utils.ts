@@ -1,6 +1,7 @@
 import chalk from 'chalk';
-import { existsSync, mkdirSync, readFileSync, readdir, writeFileSync } from 'fs';
+import { existsSync, lstat, mkdirSync, readFileSync, readdir, writeFileSync } from 'fs';
 import { dirname, join, parse } from 'path';
+import { promisify } from 'util';
 import { convertHeadingsPlugin, markdown } from './markdown';
 import { FrontMatter } from './models';
 import matter = require('gray-matter');
@@ -15,7 +16,9 @@ export const buildChecklist = async contentFolder => {
   };
 
   try {
-    const categories = await readdirAsync(contentFolder);
+    const contentPathList = await readdirAsync(contentFolder);
+
+    const categories = await _filterDirectories({ contentFolder, contentPathList });
 
     for (const category of categories) {
       const categoryPath = join(contentFolder, category);
@@ -115,7 +118,7 @@ export const readdirAsync = (path: string): Promise<Array<string>> => {
   });
 };
 
-export const printSuccess = (message: string, type = 'Sucess', addNewLine = false) => {
+export const printSuccess = (message: string, type = 'Success', addNewLine = false) => {
   console.log(`${addNewLine ? '\n' : ''}${chalk.green(`[${type}]`)} ${message}`);
 };
 
@@ -126,3 +129,23 @@ export const throwError = (message: string) => {
 export const logWarning = (message: string) => {
   console.log(`${chalk.yellow(message)}`);
 };
+
+async function _filterDirectories({
+  contentFolder,
+  contentPathList
+}: {
+  contentFolder: string;
+  contentPathList: string[];
+}): Promise<string[]> {
+  return (await Promise.all(
+    contentPathList.map(async fileName => {
+      const stats = await promisify(lstat)(join(contentFolder, fileName));
+      return {
+        fileName,
+        isDirectory: stats.isDirectory()
+      };
+    })
+  ))
+    .filter(({ isDirectory }) => isDirectory)
+    .map(({ fileName }) => fileName);
+}
