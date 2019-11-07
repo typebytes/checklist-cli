@@ -1,6 +1,7 @@
 {
   "name": "@wishtack/checklist-cli",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "yarn start:angular-checklist",
@@ -34,7 +35,6 @@
       "git add"
     ]
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^7.1.0",
     "@angular/cdk": "^7.1.0",
