@@ -1,34 +1,34 @@
 <h1>
-    <img width="35" valign="bottom" src="https://angular-checklist.io/assets/angular-checklist.png">
-    Angular Checklist
+    <img width="35" valign="bottom" src="https://raw.githubusercontent.com/wishtack/checklist-cli/master/src/assets/angular-checklist.png">
+    Checklist CLI
 </h1>
-
-This repo contains the code for [angular-checklist.io](https://angular-checklist.io).
 
 ---
 
-# 🤔 What is it?
+`@wishtack/checklist-cli` is a CLI that allows you to generate beautiful, dynamic and progress-aware best practices checklist from simple configuration and markdown files.
 
-Angular Checklist is a curated list of items that we believe every application should follow. Over the past couple of years, we have been doing a lot of code reviews and have often seen the same mistakes being made again and again.
+# The story
 
-That's when we decided to create **Angular Checklist**.
+`@wishtack/checklist-cli` is based on the source code of [Angular Checklist](https://angular-checklist.io/) which was brought to us with ❤️ by our amazing friends [Dominic Elm](https://twitter.com/elmd_) and [Kwinten Pisman](https://twitter.com/KwintenP).
 
-It's a curated list of best practices to avoid some common pitfalls.
+We thought that [Angular Checklist](https://angular-checklist.io/) is so intuitive and useful that it deserved to be adapted to other topics. That's the reason why we came up with this CLI so anyone can make a similar checklist and publish it anywhere without having to fork the app's source code.
 
-Therefore, we transformed a bunch of best practices and common mistakes into _todo_ items.
 
-The idea is that for all your projects, you can go over the checklist and see which items your projects already comply with and which you still have to put in some more effort!
+# Usage
 
-To keep track of your progress, every group has a progress indicator which tells you how many items you have already checked. If the pie chart has been completely filled, congratulations 🎉 ... your project will definitely be on track to success 🏆!
+1. Create a `content` directory (check out the Angular Checklist example [here](https://github.com/wishtack/checklist-cli/tree/master/examples/angular-checklist))
 
-# 👨‍💻 Who is behind this project?
+2. Run the CLI
+```
+npx @wishtack/checklist-cli content # where content is the path to your content folder
+```
 
-This project is brought to you with ❤️ by [Dominic Elm](https://twitter.com/elmd_) and [Kwinten Pisman](https://twitter.com/KwintenP).
+3. Deploy anywhere or start locally using `http-server`
+```
+npm install -g http-server # or yarn global add http-server
+http-server dist/browser
+```
 
 # 👷 Want to contribute?
 
-If you want to add a checklist item, file a bug, contribute some code, or improve our documentation, read up on our [contributing guidelines](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md), and check out [open issues](/issues) as well as [open pull requests](/pulls) to avoid potential conflicts.
-
-# 📄 Licence
-
-MIT License (MIT) © [Dominic Elm](https://github.com/d3lm) and [Kwinten Pisman](https://github.com/KwintenP)
+If you want to add file a bug, contribute some code, or improve our documentation, read up on our [contributing guidelines](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md), and check out [open issues](/issues) as well as [open pull requests](/pulls) to avoid potential conflicts.
