@@ -1,6 +1,5 @@
 {
   "ignore": [".git", "node_modules"],
   "watch": ["content/**/*"],
-  "exec": "yarn build-content",
-  "ext": "md"
+  "exec": "yarn build-content --skip-app-copy"
 }

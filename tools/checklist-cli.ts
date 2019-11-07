@@ -7,10 +7,22 @@ import { promisify } from 'util';
 import { copyFile, mkdir } from 'fs';
 
 export async function main() {
-  const contentPath = path.join(process.cwd(), process.argv[2]);
+  const contentRelativePath = process.argv[2];
+
+  if (!contentRelativePath) {
+    console.log(`Usage: checklist-cli CONTENT_PATH [--skip-app-copy]`);
+    process.exit(1);
+    return;
+  }
+
+  const skipAppCopy = process.argv.includes('--skip-app-copy');
+
+  const contentPath = path.join(process.cwd(), contentRelativePath);
   const distBrowserPath = path.join(process.cwd(), 'dist', 'browser');
 
-  await _copyApp({ distBrowserPath });
+  if (!skipAppCopy) {
+    await _copyApp({ distBrowserPath });
+  }
   await _copyConfig({ contentPath, distBrowserPath });
   await _buildChecklist({ contentPath, distBrowserPath });
 
@@ -30,6 +42,7 @@ export async function _copyConfig({ contentPath, distBrowserPath }) {
     path.join(contentPath, configFileName),
     path.join(distBrowserPath, 'assets', configFileName)
   );
+  printSuccess(`config.json copied into app`, 'Success');
 }
 
 export async function _buildChecklist({ contentPath, distBrowserPath }) {
@@ -42,5 +55,5 @@ main()
   .then(() => process.exit(0))
   .catch(error => {
     console.error(error);
-    process.exit(1);
+    process.exit(2);
   });
