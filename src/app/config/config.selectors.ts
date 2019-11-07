@@ -9,6 +9,11 @@ export namespace ConfigSelectors {
     config => config.title
   );
 
+  export const getDescription = createSelector(
+    getConfigState,
+    config => config.description
+  );
+
   export const getFooterLinks = createSelector(
     getConfigState,
     config => config.footerLinks

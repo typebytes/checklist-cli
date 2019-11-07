@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { Effect } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
 import { map, tap } from 'rxjs/operators';
@@ -21,5 +21,20 @@ export class ConfigEffects {
   @Effect({ dispatch: false })
   updateTitle = this.store.pipe(select(ConfigSelectors.getTitle)).pipe(tap(title => this.titleService.setTitle(title)));
 
-  constructor(private httpClient: HttpClient, private store: Store<ApplicationState>, private titleService: Title) {}
+  @Effect({ dispatch: false })
+  updateDescription = this.store.pipe(select(ConfigSelectors.getDescription)).pipe(
+    tap(description =>
+      this.meta.addTag({
+        name: 'description',
+        content: description
+      })
+    )
+  );
+
+  constructor(
+    private httpClient: HttpClient,
+    private store: Store<ApplicationState>,
+    private titleService: Title,
+    private meta: Meta
+  ) {}
 }

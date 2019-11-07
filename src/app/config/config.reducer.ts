@@ -3,6 +3,8 @@ import { ConfigState } from './config.state';
 
 export const INITIAL_STATE: ConfigState = {
   title: 'Checklist',
+  description: `Angular Checklist is a curated list of best practices for Angular apps. It’s a todo application where each item represents \
+one best practice. You can use it for code reviews or as a style guide for your applications.`,
   footerLinks: [
     {
       icon: ['fab', 'github'],
