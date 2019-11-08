@@ -32,3 +32,44 @@ http-server dist/browser
 # 👷 Want to contribute?
 
 If you want to add file a bug, contribute some code, or improve our documentation, read up on our [contributing guidelines](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md), and check out [open issues](/issues) as well as [open pull requests](/pulls) to avoid potential conflicts.
+
+# Credits
+
+<table border="0">
+  <tr>
+    <td>
+      <a href="https://github.com/d3lm" style="color: white">
+        <img src="https://github.com/d3lm.png?s=150" width="150"/>
+      </a>
+    </td>
+    <td>
+      <p>Co-author of Angular-Checklist<p>
+      <p><strong>Dominic Elm</strong></p>
+      <p><strong>twitter: </strong><a href="https://twitter.com/elmd_">@elmd_</a></p>
+    </td>
+    <td>
+      <a href="https://github.com/KwintenP" style="color: white">
+        <img src="https://github.com/KwintenP.png?s=150" width="150"/>
+      </a>
+    </td>
+    <td>
+      <p>Co-author of Angular-Checklist<p>
+      <p><strong>Kwinten Pisman</strong></p>
+      <p><strong>twitter: </strong><a href="https://twitter.com/KwintenP">@KwintenP</a></p>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <a href="https://github.com/yjaaidi" style="color: white">
+        <img src="https://github.com/yjaaidi.png?s=150" width="150"/>
+      </a>
+    </td>
+    <td>
+      <p>Author of @marmicode/checklist-cli<p>
+      <p><strong>Younes Jaaidi</strong></p>
+      <p><strong>twitter: </strong><a href="https://twitter.com/yjaaidi">@yjaaidi</a></p>
+    </td>
+    <td></td>
+  </tr>
+</table>
