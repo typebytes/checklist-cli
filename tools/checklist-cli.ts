@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import * as path from 'path';
-import * as ncp from 'ncp';
-import { buildChecklist, dumpDataToDisk, printSuccess } from './utils';
-import { promisify } from 'util';
 import { copyFile, mkdir } from 'fs';
+import { copy } from 'fs-extra';
+import * as path from 'path';
+import { promisify } from 'util';
+import { buildChecklist, dumpDataToDisk, printSuccess } from './utils';
 
 export async function main() {
   const contentRelativePath = process.argv[2] || 'content';
@@ -31,7 +31,7 @@ export async function main() {
 
 export async function _copyApp({ distBrowserPath }) {
   await promisify(mkdir)(distBrowserPath, { recursive: true });
-  await promisify(ncp)(path.join(__dirname, '..', 'browser'), distBrowserPath);
+  await promisify(copy)(path.join(__dirname, '..', 'browser'), distBrowserPath);
 
   printSuccess(`App was successfully generated in "${distBrowserPath}"`, 'Success');
 }
