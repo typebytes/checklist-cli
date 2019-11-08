@@ -1,12 +1,13 @@
 {
   "name": "@wishtack/checklist-cli",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "yarn start:angular-checklist",
     "start:angular-checklist": "concurrently \"ng serve\" \"yarn build-content:angular-checklist:watch\"",
     "build": "yarn clean && concurrently \"yarn build-app:prod\" \"yarn build-cli\"",
+    "deploy": "yarn build && yarn publish",
     "clean": "rm -f src/assets/config.json src/assets/content.json",
     "test": "ng test",
     "lint": "ng lint",

@@ -7,13 +7,7 @@ import { promisify } from 'util';
 import { copyFile, mkdir } from 'fs';
 
 export async function main() {
-  const contentRelativePath = process.argv[2];
-
-  if (!contentRelativePath) {
-    console.log(`Usage: checklist-cli CONTENT_PATH [--dev]`);
-    process.exit(1);
-    return;
-  }
+  const contentRelativePath = process.argv[2] || 'content';
 
   const isDev = process.argv.includes('--dev');
 
