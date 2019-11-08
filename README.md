@@ -13,6 +13,36 @@
 
 We thought that [Angular Checklist](https://angular-checklist.io/) is so intuitive and useful that it deserved to be adapted to other topics. That's the reason why we came up with this CLI so anyone can make a similar checklist and publish it anywhere without having to fork the app's source code.
 
+# How it works
+
+The cli converts markdown like this:
+
+```markdown
+---
+title: put code samples
+---
+
+# Problem
+
+It's hard to explain code without `code`.
+
+# Solution
+
+Write code like this:
+
+\`\`\`ts
+
+const boom = () => setInterval(boom);
+boom();
+
+\`\`\`
+
+**WARNING:** THIS WILL EXPLODE 💥
+```
+
+into something friendly like this:
+
+<img src="https://raw.githubusercontent.com/marmicode/checklist-cli/master/example.png">
 
 # Usage
 
